@@ -1,6 +1,6 @@
 import { configure } from '@storybook/react';
 
-const req = require.context('../src', true, /.stor(y|ies).(tsx|mdx)$/);
+const req = require.context('../src', true, /\.stor(y|ies)\.(ts|tsx|mdx)$/);
 
 const loadStories = () =>
   req
