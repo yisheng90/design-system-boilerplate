@@ -14,6 +14,6 @@ module.exports = {
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
-    rules: rules
+    rules
   }
 };

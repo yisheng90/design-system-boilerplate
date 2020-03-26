@@ -5,5 +5,5 @@ const aliases = {
 };
 
 module.exports = {
-  aliases: aliases
+  aliases
 };

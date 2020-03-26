@@ -3,13 +3,13 @@ const rules = [
     test: /\.(ts|js)x?$/,
     exclude: /node_modules/,
     use: {
-      loader: "babel-loader"
-    }
+      loader: 'babel-loader',
+    },
   },
   {
     test: /\.css$/,
-    use: ["style-loader", "css-loader"]
-  }
+    use: ['style-loader', 'css-loader'],
+  },
 ];
 
 module.exports = rules;
