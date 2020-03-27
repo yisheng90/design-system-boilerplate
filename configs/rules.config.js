@@ -10,6 +10,6 @@ const rules = [
     test: /\.css$/,
     use: ['style-loader', 'css-loader'],
   },
-];
+]
 
-module.exports = rules;
+module.exports = rules

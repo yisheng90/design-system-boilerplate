@@ -1,14 +1,24 @@
 module.exports = {
-  extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'prettier',
+    'plugin:jest/recommended',
+  ],
+  env: {
+    browser: true,
+    jquery: true,
+    mocha: true,
+    'jest/globals': true,
+  },
+  parser: 'babel-eslint',
+  plugins: ['import', 'jest'],
   settings: {
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx']
-    },
     'import/resolver': {
-      typescript: {}
-    }
+      webpack: {
+        config: './webpack.config.js',
+      },
+    },
   },
   ignorePatterns: [
     '*.json',
@@ -16,18 +26,18 @@ module.exports = {
     'configs',
     'webpack.config.js',
     'babel.config.js',
-    '*.mdx'
   ],
   rules: {
-    '@typescript-eslint/indent': [2, 2],
-    'import/extensions': [2, 'never'],
     'react/jsx-filename-extension': [
       1,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
+      {
+        extensions: ['.js', '.jsx', '.tsx', 'ts'],
+      },
     ],
-    'import/no-extraneous-dependencies': ['error'],
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    'jsx-a11y/label-has-for': 0,
+    'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
     'import/order': [
       'error',
       {
@@ -36,19 +46,19 @@ module.exports = {
           {
             pattern: '@app/**',
             group: 'external',
-            position: 'after'
-          }
+            position: 'after',
+          },
         ],
-        pathGroupsExcludedImportTypes: ['builtin']
-      }
-    ]
+        pathGroupsExcludedImportTypes: ['builtin'],
+      },
+    ],
   },
   overrides: [
     {
-      files: ['*.{test,spec,story,stories}.ts{,x}'],
+      files: ['*.{test,spec,story,stories}.{ts,tsx,mdx}'],
       rules: {
-        'import/no-extraneous-dependencies': ['error', { packageDir: './' }]
-      }
-    }
-  ]
-};
+        'import/no-extraneous-dependencies': ['error', { packageDir: './' }],
+      },
+    },
+  ],
+}
